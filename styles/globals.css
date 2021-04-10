@@ -40,6 +40,6 @@ body {
 
 .subjects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(39rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
   place-items: center;
 }
