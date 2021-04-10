@@ -1,16 +1,45 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@font-face {
+  font-family: "Raqaa";
+  src: url(../public/fonts/ArefRuqaa-Regular.woff2) format("woff2"),
+    url(../public/fonts/ArefRuqaa-Regular.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@font-face {
+  font-family: "Poppins";
+  src: url(../public/fonts/Poppins-Regular.woff2) format("woff2"),
+    url(../public/fonts/Poppins-Regular.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}
+
+:root {
+  --color-background: #1a1a1c;
+  --color-primary: #c3083f;
+  --color-secondary: #4e4e50;
 }
 
 * {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
   box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-background);
+  margin: 1.4rem;
+}
+
+.subjects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(39rem, 1fr));
+  place-items: center;
 }
