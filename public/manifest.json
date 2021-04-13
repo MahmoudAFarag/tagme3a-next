@@ -1,6 +1,7 @@
 {
-  "name": "Tagme3a Application",
+  "name": "Tagme3a Learning",
   "short_name": "Tagme3a",
+  "description": "Tagme3a Learning platform serving as a source of all lectures and section for clinical pharmacy students",
   "theme_color": "#c3083f",
   "background_color": "#c3083f",
   "display": "fullscreen",
@@ -9,16 +10,28 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "icons/manifest-icon-192.png",
+      "src": "/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any maskable"
     },
     {
-      "src": "icons/manifest-icon-512.png",
+      "src": "/icons/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any maskable"
     }
   ],
   "splash_pages": null
