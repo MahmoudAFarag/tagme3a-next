@@ -28,7 +28,7 @@ class MyDocument extends Document {
             sizes="180x180"
             href="/icons/apple-icon-180.png"
           />
-          <link rel="manifest" href="/manifest.json" />
+          <link rel="manifest" href="/site.webmanifest" />
           <link rel="shortcut icon" href="/favicon.ico" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
