@@ -9,13 +9,14 @@ export default function Card({ name, slug, lecturer, hours, image }) {
       <Image
         className={styles.course__image}
         src={image}
-        alt={`${name} Image`}
+        alt={`${name} course image`}
         width={480}
         height={300}
         objectFit="cover"
       />
+
       <h2 className={styles.course__name}>{name}</h2>
-      <p className={styles.course__lecturer}>Lecturer: Dr.{lecturer}</p>
+      <p className={styles.course__lecturer}>Lecturer: Dr. {lecturer}</p>
       <p className={styles.course__hours}>Credit Hours: {hours}</p>
       <Link href={`/${slug}`}>
         <a className={styles.course__button}>View Materials</a>

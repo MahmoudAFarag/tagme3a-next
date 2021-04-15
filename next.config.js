@@ -12,4 +12,7 @@ module.exports = withPWA({
     runtimeCaching,
     mode: "production",
   },
+  images: {
+    domains: ["images.ctfassets.net"],
+  },
 });
