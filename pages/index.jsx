@@ -1,3 +1,4 @@
+import { GraphQLClient, gql } from "graphql-request";
 import Head from "next/head";
 
 import Card from "../components/HomePage/Card";
@@ -55,7 +56,9 @@ const COURSES_DATA = [
   },
 ];
 
-export default function HomePage() {
+export default function HomePage({ subjects }) {
+  console.log(subjects);
+
   return (
     <>
       <Head>
@@ -76,4 +79,36 @@ export default function HomePage() {
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.SPACE_ID}`;
+
+  const graphQLClient = new GraphQLClient(endpoint, {
+    headers: {
+      authorization: `Bearer ${process.env.CDA_TOKEN}`,
+    },
+  });
+
+  const subjectsQuery = gql`
+    {
+      subjectCollection {
+        items {
+          name
+          lecturer
+          creditHours
+          image {
+            description
+            url
+          }
+        }
+      }
+    }
+  `;
+
+  const subjects = await graphQLClient.request(subjectsQuery);
+
+  return {
+    props: { subjects },
+  };
 }
