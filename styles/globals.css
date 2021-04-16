@@ -4,7 +4,7 @@
     url(../public/fonts/ArefRuqaa-Regular.woff) format("woff");
   font-weight: normal;
   font-style: normal;
-  font-display: fallback;
+  font-display: optional;
 }
 
 @font-face {
@@ -13,7 +13,7 @@
     url(../public/fonts/Poppins-Regular.woff) format("woff");
   font-weight: normal;
   font-style: normal;
-  font-display: fallback;
+  font-display: optional;
 }
 
 :root {
