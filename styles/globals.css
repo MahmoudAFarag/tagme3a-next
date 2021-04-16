@@ -2,14 +2,18 @@
   font-family: "Raqaa";
   src: url(../public/fonts/ArefRuqaa-Regular.woff2) format("woff2"),
     url(../public/fonts/ArefRuqaa-Regular.woff) format("woff");
-  font-display: optional;
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
 }
 
 @font-face {
   font-family: "Poppins";
   src: url(../public/fonts/Poppins-Regular.woff2) format("woff2"),
     url(../public/fonts/Poppins-Regular.woff) format("woff");
-  font-display: optional;
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
 }
 
 :root {
