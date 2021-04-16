@@ -7,20 +7,6 @@ class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta name="application-name" content="Tagme3a Learning Platform" />
-          <link
-            rel="preload"
-            href="/fonts/ArefRuqaa-Regular.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            href="/fonts/Poppins-Regular.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta
             name="apple-mobile-web-app-status-bar-style"
