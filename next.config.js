@@ -1,5 +1,5 @@
-const withPWA = require("next-pwa");
-const runtimeCaching = require("next-pwa/cache");
+const withPWA = require("next-pwa")
+const runtimeCaching = require("next-pwa/cache")
 
 module.exports = withPWA({
   future: {
@@ -8,10 +8,11 @@ module.exports = withPWA({
   },
   pwa: {
     dest: "public",
+    // disable: true,
     runtimeCaching,
     mode: "production",
   },
   images: {
     domains: ["images.ctfassets.net"],
   },
-});
+})

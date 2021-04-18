@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "../styles/globals.css"
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -7,9 +7,9 @@ function MyApp({ Component, pageProps }) {
         name="viewport"
         content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
       />
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp
