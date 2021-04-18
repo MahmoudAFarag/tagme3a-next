@@ -1,7 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
 
-import styles from "./Card.module.scss";
+import styles from "./HomeCard.module.scss"
 
 export default function Card({ name, slug, lecturer, hours, image }) {
   return (
@@ -22,5 +22,5 @@ export default function Card({ name, slug, lecturer, hours, image }) {
         <a className={styles.course__button}>View Materials</a>
       </Link>
     </div>
-  );
+  )
 }

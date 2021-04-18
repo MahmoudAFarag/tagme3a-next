@@ -2,8 +2,6 @@
   font-family: "Raqaa";
   src: url(../public/fonts/ArefRuqaa-Regular.woff2) format("woff2"),
     url(../public/fonts/ArefRuqaa-Regular.woff) format("woff");
-  font-weight: normal;
-  font-style: normal;
   font-display: fallback;
 }
 
@@ -11,14 +9,13 @@
   font-family: "Poppins";
   src: url(../public/fonts/Poppins-Regular.woff2) format("woff2"),
     url(../public/fonts/Poppins-Regular.woff) format("woff");
-  font-weight: normal;
-  font-style: normal;
   font-display: fallback;
 }
 
 :root {
   --color-background: #1a1a1c;
   --color-primary: #c3083f;
+  --color-primary-dark: #cc0b45e8;
   --color-secondary: #4e4e50;
 }
 
@@ -39,6 +36,12 @@ body {
 }
 
 .subjects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+  place-items: center;
+}
+
+.weeks {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
   place-items: center;
