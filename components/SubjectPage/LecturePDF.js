@@ -21,13 +21,13 @@ export default function LecturePDF({ styles, lecturePDF, lecturePDF2 }) {
             Lecture PDF
           </option>
           <option
-            value="https://www.youtube.com/watch?v=1FA18Anjr6Y"
+            value={lecturePDF}
             className={styles.week__material_sectionDropDown_opt}
           >
             Part 1
           </option>
           <option
-            value="https://www.youtube.com/watch?v=cQC9uF0O540"
+            value={lecturePDF2}
             className={styles.week__material_sectionDropDown_opt}
           >
             Part 2

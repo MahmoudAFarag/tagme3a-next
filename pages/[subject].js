@@ -2,8 +2,14 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import { GraphQLClient, gql } from "graphql-request"
 
+import styles from "@components/SubjectPage/SubjectCard.module.scss"
+
+import Lecture from "@components/SubjectPage/Lecture"
+import LecturePDF from "@components/SubjectPage/LecturePDF"
+import Section from "@components/SubjectPage/Section"
+import Timetable from "@components/SubjectPage/Timetable"
+
 import SubjectHero from "@components/SubjectPage/SubjectHero"
-import SubjectCard from "@components/SubjectPage/SubjectCard"
 
 export default function SubjectWeek({ weeks }) {
   const router = useRouter()
@@ -16,16 +22,24 @@ export default function SubjectWeek({ weeks }) {
       <SubjectHero subjectName={router.query.subject} />
       <div className="weeks">
         {weeks.map((week) => (
-          <SubjectCard
-            key={week.weekNumber}
-            weekNum={week.weekNumber}
-            lectureUrl={week.lectureUrl}
-            lectureUrl2={week.lectureUrl2}
-            lecturePDF={week.lecturePdf}
-            lecturePDF2={week.lecturePdf2}
-            sectionUrl={week.sectionUrl}
-            timetable={week.timetable}
-          />
+          <div className={styles.week} key={week.weekNumber}>
+            <h1 className={styles.week__num}>Week {week.weekNumber}</h1>
+            <Lecture
+              styles={styles}
+              weekNum={week.weekNumber}
+              lectureUrl={week.lectureUrl}
+              lectureUrl2={week.lectureUrl2}
+            />
+            <LecturePDF
+              styles={styles}
+              lecturePDF={week.lecturePdf}
+              lecturePDF2={week.lecturePdf2}
+            />
+            <Section styles={styles} sectionUrl={week.sectionUrl}>
+              Section {week.weekNumber}
+            </Section>
+            <Timetable styles={styles} timetable={week.timetable} />
+          </div>
         ))}
       </div>
     </>
