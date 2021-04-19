@@ -1,15 +1,15 @@
-import Head from "next/head"
 import { useRouter } from "next/router"
-import { GraphQLClient, gql } from "graphql-request"
+import Head from "next/head"
+
+import fetchWeeks from "utils/fetchWeeks"
 
 import styles from "@components/SubjectPage/SubjectCard.module.scss"
-
+import SubjectHero from "@components/SubjectPage/SubjectHero"
 import Lecture from "@components/SubjectPage/Lecture"
 import LecturePDF from "@components/SubjectPage/LecturePDF"
 import Section from "@components/SubjectPage/Section"
+import SectionPDF from "@components/SubjectPage/SectionPDF"
 import Timetable from "@components/SubjectPage/Timetable"
-
-import SubjectHero from "@components/SubjectPage/SubjectHero"
 
 export default function SubjectWeek({ weeks }) {
   const router = useRouter()
@@ -38,6 +38,7 @@ export default function SubjectWeek({ weeks }) {
             <Section styles={styles} sectionUrl={week.sectionUrl}>
               Section {week.weekNumber}
             </Section>
+            <SectionPDF styles={styles} sectionPDF={week.sectionPdf} />
             <Timetable styles={styles} timetable={week.timetable} />
           </div>
         ))}
@@ -47,41 +48,18 @@ export default function SubjectWeek({ weeks }) {
 }
 
 export async function getStaticProps(context) {
-  const currentSubject = context.params.subject.toLowerCase()
-  const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.SPACE_ID}`
-
-  const graphQLClient = new GraphQLClient(endpoint, {
-    headers: {
-      authorization: `Bearer ${process.env.CDA_TOKEN}`,
-    },
-  })
-
-  const subjectQuery = gql`
-    {
-      ${currentSubject}WeekCollection(order: weekNumber_ASC) {
-        items {
-          weekNumber
-          lectureUrl
-          lectureUrl2
-          lecturePdf
-          lecturePdf2
-          sectionUrl
-          sectionPdf
-          ${currentSubject === "micro" ? "spotsUrl" : ""}
-          timetable
-        }
-      }
-    }
-  `
-
-  const data = await graphQLClient.request(subjectQuery)
+  const data = await fetchWeeks(context.params.subject.toLowerCase())
 
   return {
     props: {
       weeks:
         data.medicinalWeekCollection?.items ||
         data.qualityWeekCollection?.items ||
-        data.microWeekCollection?.items,
+        data.kineticsWeekCollection?.items ||
+        data.technoWeekCollection?.items ||
+        data.communityWeekCollection?.items ||
+        data.microWeekCollection?.items ||
+        data.aidWeekCollection?.items,
     },
     revalidate: 60,
   }
@@ -92,12 +70,12 @@ export async function getStaticPaths() {
     paths: [
       { params: { subject: "Medicinal" } },
       { params: { subject: "Quality" } },
-      // { params: { subject: "Kinetics" } },
-      // { params: { subject: "Techno" } },
-      // { params: { subject: "Community" } },
+      { params: { subject: "Kinetics" } },
+      { params: { subject: "Techno" } },
+      { params: { subject: "Community" } },
       { params: { subject: "Micro" } },
-      // { params: { subject: "Aid" } }, // See the "paths" section below
+      { params: { subject: "Aid" } },
     ],
-    fallback: false, // See the "fallback" section below
+    fallback: false,
   }
 }

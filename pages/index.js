@@ -1,5 +1,5 @@
-import { GraphQLClient, gql } from "graphql-request"
 import Head from "next/head"
+import fetchSubjects from "../utils/fetchSubjects"
 
 import HomeCard from "@components/HomePage/HomeCard"
 import HomeHero from "@components/HomePage/HomeHero"
@@ -28,35 +28,12 @@ export default function HomePage({ subjects }) {
 }
 
 export async function getStaticProps() {
-  const endpoint = `https://graphql.contentful.com/content/v1/spaces/${process.env.SPACE_ID}`
-
-  const graphQLClient = new GraphQLClient(endpoint, {
-    headers: {
-      authorization: `Bearer ${process.env.CDA_TOKEN}`,
-    },
-  })
-
-  const subjectsQuery = gql`
-    {
-      subjectCollection(order: id_ASC) {
-        items {
-          id
-          name
-          slug
-          lecturer
-          creditHours
-          image {
-            url
-          }
-        }
-      }
-    }
-  `
-
-  const { subjectCollection } = await graphQLClient.request(subjectsQuery)
+  const subjects = await fetchSubjects()
 
   return {
-    props: { subjects: subjectCollection.items },
+    props: {
+      subjects,
+    },
     revalidate: 60,
   }
 }
